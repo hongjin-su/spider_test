@@ -616,7 +616,7 @@ def evaluate(gold, predict, db_dir, etype, kmaps, plug_value, keep_distinct, pro
                 #     if db_file.endswith('sqlite'):
                 #         exec_score = min(eval_exec_match(db=db, p_str=p_str, g_str=g_str, plug_value=plug_value,
                 #                              keep_distinct=keep_distinct, progress_bar_for_each_datapoint=progress_bar_for_each_datapoint), exec_score)
-                if count in [1033]:
+                if count in []:
                     exec_score = 0
                 else:
                     exec_score = eval_exec_match(db=db, p_str=p_str, g_str=g_str, plug_value=plug_value,
