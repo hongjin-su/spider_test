@@ -949,7 +949,7 @@ if __name__ == "__main__":
         if output_file.startswith('raw_response') and os.path.isfile(os.path.join(args.output_dir,output_file)):
             with open(os.path.join(args.output_dir,output_file)) as cur_file:
                 cur_dict = json.load(cur_file)
-            preds.append(cur_dict['raw_response'].split('\n\n--')[0].replace('\n',' '))
+            preds.append("SELECT "+cur_dict['raw_response'].split('\n\n--')[0].replace('\n',' '))
             golds.append(cur_dict['example']['query']+'\t'+cur_dict['example']['db_id'])
     with open('cur_preds.txt','w') as f:
         for cur_p in preds:
