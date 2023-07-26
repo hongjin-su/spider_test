@@ -566,9 +566,9 @@ def evaluate(gold, predict, db_dir, etype, kmaps, plug_value, keep_distinct, pro
         count = -1
         for idx, pg in enumerate(zip(p, g)):
             count += 1
-            print(count)
-            if count<1033:
-                continue
+            # print(count)
+            # if count<1033:
+            #     continue
             p, g = pg
             p_str = p[0]
             p_str = p_str.replace("value", "1")
@@ -950,7 +950,7 @@ if __name__ == "__main__":
             with open(os.path.join(args.output_dir,output_file)) as cur_file:
                 cur_dict = json.load(cur_file)
             preds.append(cur_dict['raw_response'].split('\n\n--')[0].replace('\n',' '))
-            golds.append(cur_dict['example']['query'])
+            golds.append(cur_dict['example']['query']+'\t'+cur_dict['example']['db_id'])
     with open('cur_preds.txt','w') as f:
         for cur_p in preds:
             f.write(cur_p.strip()+'\n')
