@@ -566,6 +566,7 @@ def evaluate(gold, predict, db_dir, etype, kmaps, plug_value, keep_distinct, pro
         count = -1
         for idx, pg in enumerate(zip(p, g)):
             count += 1
+            print(idx)
             # print(count)
             # if count<1033:
             #     continue
