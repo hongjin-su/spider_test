@@ -568,8 +568,8 @@ def evaluate(gold, predict, db_dir, etype, kmaps, plug_value, keep_distinct, pro
             count += 1
             print(idx)
             # print(count)
-            if count<638:
-                continue
+            # if count<638:
+            #     continue
             p, g = pg
             p_str = p[0]
             p_str = p_str.replace("value", "1")
