@@ -945,18 +945,25 @@ if __name__ == "__main__":
 
     preds = []
     golds = []
-    for output_file in os.listdir(args.output_dir):
-        if output_file.startswith('raw_response') and os.path.isfile(os.path.join(args.output_dir,output_file)):
-            with open(os.path.join(args.output_dir,output_file)) as cur_file:
-                cur_dict = json.load(cur_file)
-            preds.append("SELECT "+cur_dict['raw_response'].split('\n\n--')[0].replace('\n',' '))
-            golds.append(cur_dict['example']['query']+'\t'+cur_dict['example']['db_id'])
+    # for output_file in os.listdir(args.output_dir):
+    #     if output_file.startswith('raw_response') and os.path.isfile(os.path.join(args.output_dir,output_file)):
+    #         with open(os.path.join(args.output_dir,output_file)) as cur_file:
+    #             cur_dict = json.load(cur_file)
+    #         preds.append("SELECT "+cur_dict['raw_response'].split('\n\n--')[0].replace('\n',' '))
+    #         golds.append(cur_dict['example']['query']+'\t'+cur_dict['example']['db_id'])
+    with open(os.path.join(args.output_dir,'predictions.jsonl')) as f:
+        lines = f.readlines()
+    for l in lines:
+        cur = json.loads(l)
+        golds.append(cur['target'])
+        preds.append('SELECT '+cur.split('--')[0].strip())
     with open('cur_preds.txt','w') as f:
         for cur_p in preds:
             f.write(cur_p.strip()+'\n')
     with open('cur_golds.txt','w') as f:
         for cur_g in golds:
             f.write(cur_g.strip()+'\n')
+    
     args.pred = 'cur_preds.txt'
     args.gold = 'cur_golds.txt'
 
