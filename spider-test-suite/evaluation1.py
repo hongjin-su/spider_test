@@ -568,8 +568,8 @@ def evaluate(gold, predict, db_dir, etype, kmaps, plug_value, keep_distinct, pro
             count += 1
             print(idx)
             # print(count)
-            # if count<1033:
-            #     continue
+            if count<638:
+                continue
             p, g = pg
             p_str = p[0]
             p_str = p_str.replace("value", "1")
@@ -617,7 +617,7 @@ def evaluate(gold, predict, db_dir, etype, kmaps, plug_value, keep_distinct, pro
                 #     if db_file.endswith('sqlite'):
                 #         exec_score = min(eval_exec_match(db=db, p_str=p_str, g_str=g_str, plug_value=plug_value,
                 #                              keep_distinct=keep_distinct, progress_bar_for_each_datapoint=progress_bar_for_each_datapoint), exec_score)
-                if count in [637]:
+                if count in [637，638]:
                     exec_score = 0
                 else:
                     exec_score = eval_exec_match(db=db, p_str=p_str, g_str=g_str, plug_value=plug_value,
