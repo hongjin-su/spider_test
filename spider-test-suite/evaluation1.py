@@ -957,7 +957,7 @@ if __name__ == "__main__":
     for l in lines:
         cur = json.loads(l)
         golds.append(cur['target']+'\t'+cur['db_id'])
-        preds.append('SELECT '+cur['raw_output'].split('--')[0].strip().replace('\n',' ').split('   ')[0].replace('`',''))
+        preds.append('SELECT '+cur['raw_output'].split('--')[0].strip().replace('\n',' '))
     
     with open('cur_preds.txt','w') as f:
         for cur_p in preds:
